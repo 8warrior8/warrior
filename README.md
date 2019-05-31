@@ -1,2 +1,2 @@
 # warrior
-sample
+we first vue project sample
