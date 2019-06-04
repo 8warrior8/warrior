@@ -1,6 +1,6 @@
 <template>
-  <div class="stylus-main-div">
-    <div class="stylus-row-div">
+  <div class="base4-main-div">
+    <div class="base4-row-div">
       <h4>4.过滤器</h4>
       <p>过滤器可以用在两个地方：双花括号插值和 v-bind 表达式，可同时使用多个</p>
       <p>文本：绿色的衣服，绿色的帽子 </p>
@@ -51,10 +51,10 @@ export default {
 
 
 <style>
-.stylus-main-div {
+.base4-main-div {
   width: 100%;
 }
-.stylus-row-div {
+.base4-row-div {
   width: 100%;
   text-align: left;
 }
