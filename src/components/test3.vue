@@ -107,13 +107,26 @@
       <div class="order-left">v-for 略</div>
     </div>
     <div class="order-row-div">
+      <!-- v-bind 在绑定的时候，可拼接绑定内容：:title="vBind + '123'" 
+      可以用方括号括起来的 JavaScript 表达式作为一个指令的参数 v-bind:[attributeName]-->
       <div class="order-left">v-bind 略</div>
+      <div class="order-left-div">
+        <span>{{vBind}}</span>
+      </div>
+      <div class="order-right-div">
+        <input type="button" :[attributeName]="vBind + '123456'">
+      </div>
+      <div class="order-right">[ {{vBind + '+' + ' "123456" '}} ]</div>
     </div>
     <div class="order-row-div">
       <div class="order-left">v-model 略</div>
+      <div class="order-right-div">
+        <span>（v-model中包含.lazy/.number/.trim修饰符）</span>
+      </div>
     </div>
     <div class="order-row-div">
       <div class="order-left">v-on 略</div>
+      
     </div>
   </div>
 </template>
@@ -127,6 +140,8 @@ export default {
       vPre: "加v-pre不编译",
       vCloak: "我会闪烁",
       vOnce: "只会渲染一次",
+      vBind: "我可以进行拼接",
+      attributeName: "value",
       vif: 1,
       vShow: "true"
     };
