@@ -1,6 +1,6 @@
 <template>
-  <div class="stylus-main-div">
-    <div class="stylus-row-div">
+  <div class="base1-main-div">
+    <div class="base1-row-div">
       <h4>1.生命周期钩子</h4>
       <p>
         什么是生命周期：从Vue实例创建、运行、到销毁期间，总是伴随着各种各样的事件，这些事件，统称为生命周期！
@@ -21,33 +21,30 @@
 
       <h3>例子：点击按钮在beforeDestroy()中销毁</h3>
       <button @click="destoryVm">destoty vm</button>
-      <p class="stylus-row-div1-p" v-bind:class="{ 'stylus-row-div1-p2': isShow }">显示隐藏的文本(每秒)</p>
+      <p class="base1-row-div1-p" v-bind:class="{ 'base1-row-div1-p2': isShow }">显示隐藏的文本(每秒)</p>
       <br>
       <h3>生命周期图示</h3>
       <img src="..\img\lifecycle.png">
     </div>
-       
-    
   </div>
 </template>
 
 <script>
 export default {
-    
   data() {
     return {
-      isShow: true,
+      isShow: true
     };
   },
   components: {},
   methods: {
-      //销毁vm
+    //销毁vm
     destoryVm() {
       // 完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。
       // 触发 beforeDestroy 和 destroyed 的钩子。
       //dom元素还存在,数据不变化了
       this.$destroy();
-    },
+    }
   },
   watch: {},
   computed: {},
@@ -71,6 +68,10 @@ export default {
     this.instervalid = setInterval(() => {
       this.isShow = !this.isShow;
     }, 1000);
+    //这里为了能自动停止定时器，延时5s销毁定时器
+    setTimeout(() => {
+      this.$destroy();
+    }, 5000);
     console.log("挂载到dom后:mounted()");
   },
   //2.更新阶段(可能会执行N次)
@@ -95,21 +96,21 @@ export default {
 
 
 <style>
-.stylus-main-div {
+.base1-main-div {
   width: 100%;
 }
-.stylus-row-div {
-  width: 100%;
-  text-align: left;
-}
-.stylus-row-div img {
+.base1-row-div {
   width: 100%;
   text-align: left;
 }
-.stylus-row-div1-p {
+.base1-row-div img {
+  width: 100%;
+  text-align: left;
+}
+.base1-row-div1-p {
   height: 50px;
 }
-.stylus-row-div1-p2 {
+.base1-row-div1-p2 {
   color: red;
 }
 </style>

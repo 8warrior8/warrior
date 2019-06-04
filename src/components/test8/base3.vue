@@ -1,6 +1,6 @@
 <template>
-  <div class="stylus-main-div">
-    <div class="stylus-row-div">
+  <div class="base3-main-div">
+    <div class="base3-row-div">
       <h4>3.Class 与 Style 绑定</h4>1. 数组
       <h4 :class="['red', 'thin']">这是一个数组的H1</h4>2. 数组中使用三元表达式
       <h4 :class="['red',  isthin?'thin':'']">数组中使用三元表达式</h4>3. 数组中嵌套对象
@@ -38,10 +38,10 @@ export default {
 
 
 <style>
-.stylus-main-div {
+.base3-main-div {
   width: 100%;
 }
-.stylus-row-div {
+.base3-row-div {
   width: 100%;
   text-align: left;
 }

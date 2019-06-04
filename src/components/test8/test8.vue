@@ -1,5 +1,5 @@
 <template>
-  <div class="stylus-main-div">
+  <div class="test8-main-div">
     <a href="https://cn.vuejs.org/v2/guide/" target="_blank">学习资料</a>
     <br>
     <br>
@@ -13,32 +13,32 @@
     <button @click="change('base6')">组件</button>
 
     <!-- 生命周期钩子 -->
-    <div class="stylus-row-div" v-show="base1">
+    <div class="test8-row-div" v-show="base1">
       <base-1></base-1>
     </div>
 
     <!-- 监视和计算属性 -->
-    <div class="stylus-row-div" v-show="base2">
+    <div class="test8-row-div" v-show="base2">
       <base-2></base-2>
     </div>
 
     <!-- Class 与 Style 绑定 -->
-    <div class="stylus-row-div" v-show="base3">
+    <div class="test8-row-div" v-show="base3">
       <base-3></base-3>
     </div>
 
     <!-- 过滤器 -->
-    <div class="stylus-row-div" v-show="base4">
+    <div class="test8-row-div" v-show="base4">
       <base-4></base-4>
     </div>
 
     <!-- 修饰符 -->
-    <div class="stylus-row-div" v-show="base5">
+    <div class="test8-row-div" v-show="base5">
       <base-5></base-5>
     </div>
 
     <!-- 组件 -->
-    <div class="stylus-row-div" v-show="base6">
+    <div class="test8-row-div" v-show="base6">
       <base-6></base-6>
     </div>
   </div>
@@ -102,13 +102,22 @@ export default {
 </script>
 
 <style>
-.stylus-main-div {
+.test8-main-div {
   width: 100%;
 }
 
-.stylus-row-div {
+.test8-row-div {
   width: 100%;
   text-align: left;
+}
+.test8-main-div>button{
+      outline: none;
+    padding: 5px 8px;
+    color: #fff;
+    border: 1px solid #BCBCBC;
+    border-radius: 3px;
+    background-color: #009A61;
+    cursor: pointer;
 }
 </style>
 

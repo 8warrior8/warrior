@@ -1,6 +1,6 @@
 <template>
-  <div class="stylus-main-div">
-    <div class="stylus-row-div">
+  <div class="base2-main-div">
+    <div class="base2-row-div">
       <h4>2.监视和计算属性</h4>
       <p>
         1. `computed`属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。主要当作属性来使用；
@@ -70,10 +70,10 @@ export default {
 
 
 <style>
-.stylus-main-div {
+.base2-main-div {
   width: 100%;
 }
-.stylus-row-div {
+.base2-row-div {
   width: 100%;
   text-align: left;
 }
