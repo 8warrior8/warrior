@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <h2>全局统计：{{this.$store.state.count}}</h2>
     <div class="my-link" >
       <router-link to="/" exact-active-class="link-active" tag="h3">首页</router-link>
       <router-link to="/test1" exact-active-class="link-active" tag="h3">vue路由</router-link>
