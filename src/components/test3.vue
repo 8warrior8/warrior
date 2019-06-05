@@ -14,7 +14,7 @@
       <div class="order-left-div">
         <input type="text" v-model="vText" placeholder="默认值">
       </div>
-      <div class="order-right-div">
+      <div class="order-right-div">     
         <span>{{vText}}</span>
       </div>
       <div class="order-right">[ {{vText}} ]</div>
