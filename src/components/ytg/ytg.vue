@@ -5,7 +5,7 @@
           <span>头部内容</span>
       </template>
       <template v-slot:default>
-         <func></func>
+          <func></func>
       </template>
       <template v-slot:footer>
         <span>低部内容</span>
