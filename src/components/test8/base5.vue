@@ -1,6 +1,6 @@
 <template>
-  <div class="stylus-main-div">
-    <div class="stylus-row-div">
+  <div class="base5-main-div">
+    <div class="base5-row-div">
       <h4>5.修饰符</h4>
       1.事件修饰符
       <a href="https://cn.vuejs.org/v2/guide/events.html" target="_blank">学习资料</a>
@@ -107,10 +107,10 @@ export default {
 
 
 <style>
-.stylus-main-div {
+.base5-main-div {
   width: 100%;
 }
-.stylus-row-div {
+.base5-row-div {
   width: 100%;
   text-align: left;
 }
