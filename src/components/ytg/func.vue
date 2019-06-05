@@ -12,7 +12,7 @@
     <br>
     <button id="btnCreate" v-on:click="closeComp">组件切换</button>
     <br>
-    <keep-alive include="child,b">
+    <keep-alive include="child" exclude="test">
       <component
         ref="childView"
         :is="componentId"
