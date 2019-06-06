@@ -16,7 +16,7 @@
 <script>
 
 /* 
-//全局过滤器
+//在main.js中定义全局过滤器
 Vue.filter("msgFormat", function(msg, arg, arg2) {
   return msg.replace("绿色", arg + arg2);
 });
@@ -38,7 +38,7 @@ export default {
     msgFormat: function(msg, arg, arg2) {
       return msg.replace(/绿色/g, arg + arg2);
     },
-    test: function(msg, arg, arg2) {
+    test: function(msg) {
       return msg.replace(/衣服/g, ' "衣服"');
     },
   },

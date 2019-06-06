@@ -18,7 +18,7 @@
       <h3>.enter/ .tab / .delete (捕获“删除”和“退格”键) / .esc / .space / .up / .down / .left / .right</h3>
       <!-- 回车修饰符 .enter-->
       <p>点击按钮或回车都可传递数据：</p>
-      <input type="text" v-model="text1" @keyup.enter="add">
+      <input type="text" v-model="text1" @keyup.space.enter="add">
       <button @click="add()">传递</button>
       <input type="text" v-model="text2">
       <br>
@@ -28,7 +28,7 @@
         target="_blank"
       >学习资料(各种参数)</a>
       <p>增加样式：使文字变红色</p>
-      <p>自定义命令：v-color="'red'"</p>
+      <p>自定义命令：v-color="red"</p>
       <span>改变后效果：</span>
       <span v-color="'red'">{{ text1 }}</span>
     </div>
@@ -38,12 +38,12 @@
 <script>
 
 /* 
-//全局自定义键盘码（自定义按键修饰符）
+//在main.js中定义全局自定义键盘码（自定义按键修饰符）
 Vue.config.keyCodes.f2 = 113;
  */
 
 /* 
-//全局自定义指令：调用时必须在指令前加 “v-” 前缀
+//在main.js中定义全局自定义指令：调用时必须在指令前加 “v-” 前缀
 // 注册一个全局自定义指令 `v-focus`
 //bind：与样式相关，inserted：与js行为相关
 
