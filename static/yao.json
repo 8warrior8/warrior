@@ -1,0 +1,13 @@
+{
+    "msg": "json获取",
+    "questionList": [
+        {
+            "question": "a",
+            "answer": "你输入了a"
+        },
+        {
+            "question": "b",
+            "answer": "你输入了b"
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input  v-model="msg">
+    <input v-model="msg">
     输入框的值:{{msg}}
     <button id="btnCreate" v-on:click="createButton">创建属性</button>
     <input v-model="qianmi">
@@ -32,7 +32,7 @@ export default {
   name: "func",
   data() {
     return {
-      msg: "a",
+      msg: "",
       qianmi: 1,
       question: "",
       answer: "",
@@ -97,6 +97,15 @@ export default {
     console.log("mounted-挂载完成：");
     console.log(this.$el, "&el");
     console.log(this.$data, "&data");
+    this.$axios
+      .get("static/yao.json")
+      .then(response => {
+        this.msg = response.data.msg;
+      })
+      .catch(function(error) {
+        // 请求失败处理
+        console.log(error);
+      });
   },
   beforeUpdate: function() {
     //该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行
@@ -109,6 +118,7 @@ export default {
     //注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated
     console.log("updated");
     console.log("==更新成功==");
+    //在修改数据之后立即使用它，然后等待 DOM 更新
     this.$nextTick(function() {
       // Code that will run only after the
       // entire view has been re-rendered
@@ -161,7 +171,27 @@ export default {
     },
     getAnswer: function() {
       //可以异步请求服务 获取 answer
-      this.answer = "answer";
+      //this.answer = "answer";
+      var self = this;
+      this.$axios
+        .get("static/yao.json")
+        .then(response => {
+          let _answer = "";
+          response.data.questionList.forEach(function(item) {
+            if (item.question === self.question) {
+              _answer = item.answer;
+            }
+          });
+          if (_answer) {
+            this.answer = _answer;
+          } else {
+            this.answer = "未获取到答案";
+          }
+        })
+        .catch(function(error) {
+          // 请求失败处理
+          console.log(error);
+        });
     },
     childClick: function(value) {
       this.msg = value;
