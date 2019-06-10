@@ -10,7 +10,7 @@
     <child1 v-bind:title="title" v-bind="$attrs" v-on="$listeners"></child1>
     <br>child2组件
     <br>
-    <child2></child2>
+    <child2 v-bind="$attrs"></child2>
   </div>
 </template>
 <script>
@@ -76,7 +76,7 @@ export default {
     child2: child2
   },
   mounted: function() {
-    //this.initData();
+    this.initData();
   },
   activated: function() {
     //keep-alive 组件激活时调用

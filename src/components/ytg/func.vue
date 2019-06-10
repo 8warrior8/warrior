@@ -17,9 +17,10 @@
         ref="childView"
         :is="componentId"
         v-bind:question="question"
+        v-bind:qianmi="qianmi"
         v-bind:message.sync="msg"
         v-on:childButton="childClick"
-        v-on:childButton1="childClick1"
+        v-on="$listeners"
       ></component>
     </keep-alive>
   </div>
@@ -153,14 +154,14 @@ export default {
     console.log(this.$data, "&data");
     console.log("destroyed.msg=" + this.msg);
   },
-  errorCaptured: function(error, vm, info) {
-    //当捕获一个来自子孙组件的错误时被调用。
-    //此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。
-    //此钩子可以返回 false 以阻止该错误继续向上传播
-    console.log("errorCaptured.error=" + error);
-    console.log(vm, "vm");
-    console.log("errorCaptured.info=" + info);
-  },
+  // errorCaptured: function(error, vm, info) {
+  //   //当捕获一个来自子孙组件的错误时被调用。
+  //   //此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。
+  //   //此钩子可以返回 false 以阻止该错误继续向上传播
+  //   console.log("errorCaptured.error=" + error);
+  //   console.log(vm, "vm");
+  //   console.log("errorCaptured.info=" + info);
+  // },
   methods: {
     startUp: function() {
       console.log("startUp");
