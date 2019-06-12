@@ -174,25 +174,56 @@ export default {
       //可以异步请求服务 获取 answer
       //this.answer = "answer";
       var self = this;
-      this.$axios
-        .get("static/yao.json")
-        .then(response => {
-          let _answer = "";
-          response.data.questionList.forEach(function(item) {
-            if (item.question === self.question) {
-              _answer = item.answer;
-            }
-          });
-          if (_answer) {
-            this.answer = _answer;
-          } else {
-            this.answer = "未获取到答案";
-          }
+      this.getAnswerPromise()
+        .then(function(answer) {
+          self.answer = answer;
         })
         .catch(function(error) {
-          // 请求失败处理
-          console.log(error);
+          console.error("出错了", error);
         });
+    },
+    getAnswerPromise: function() {
+      var self = this;
+      return new Promise(function(resolve, reject) {
+        self.$axios
+          .get("static/yao.json")
+          .then(response => {
+            let _answer = "";
+            // response.data.questionList.forEach(function(item) {
+            //   if (item.question === self.question) {
+            //     _answer = item.answer;
+            //   }
+            // });
+            let _answerItem = response.data.questionList.find(function(
+              item,
+              index,
+              arr
+            ) {
+              if (item.question === self.question) {
+                return true;
+              }
+            });
+            let _answerArray = response.data.questionList.filter(function(
+              item,
+              index,
+              arr
+            ) {
+              if (item.question === self.question) {
+                return true;
+              }
+            });
+            if (_answerItem) {
+              _answer = _answerItem.answer;
+            } else {
+              _answer = "未获取到答案";
+            }
+            resolve(_answer);
+          })
+          .catch(function(error) {
+            // 请求失败处理
+            reject(error);
+          });
+      });
     },
     childClick: function(value) {
       this.msg = value;
