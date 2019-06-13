@@ -8,7 +8,7 @@
         <func v-on:childButton1="childClick1"></func>
       </template>
       <template v-slot:footer>
-        <span>低部内容</span>
+        <linechart></linechart>
       </template>
     </container>
   </div>
@@ -17,11 +17,13 @@
 <script>
 import container from "./container";
 import func from "./func";
+import linechart from "./line";
 export default {
   name: "ytg",
   components: {
     container: container,
-    func: func
+    func: func,
+    linechart: linechart
   },
   errorCaptured: function(error, vm, info) {
     //当捕获一个来自子孙组件的错误时被调用。

@@ -26,6 +26,6 @@
   flex: 1;
 }
 .footer {
-  height: 30px;
+  height: 200px;
 }
 </style>

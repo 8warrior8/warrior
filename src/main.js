@@ -12,9 +12,12 @@ import './styles/global.styl'
 import './styles/globalLight.styl'
 
 import axios from 'axios'
+// 引入echarts
+import echarts from 'echarts'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
+Vue.prototype.$echarts = echarts
 
 Vue.use(ElementUI);
 

@@ -1,0 +1,87 @@
+<template>
+  <div ref="line_chart"></div>
+</template>
+
+
+<script>
+export default {
+  name: "line_chart",
+  data() {
+    return {
+      myChart: "",
+      baseoption: {
+        tooltip: {
+          trigger: "axis"
+        },
+        xAxis: [
+          {
+            type: "category",
+            data: []
+          }
+        ],
+        yAxis: [
+          {
+            type: "value"
+          }
+        ],
+        series: []
+      }
+    };
+  },
+  props: {
+    dataSource: {
+      type: Array,
+      default: function() {
+        return [];
+      }
+    },
+    customTheme: {
+      type: Object,
+      default: function() {
+        return {};
+      }
+    }
+  },
+  watch: {
+    dataSource: function(newDataSource, oldDataSource) {
+      this.drawLine();
+    }
+  },
+  mounted: function() {
+    var self = this;
+    this.myChart = this.$echarts.init(this.$refs.line_chart);
+    window.addEventListener("resize", function() {
+      self.myChart.resize();
+    });
+  },
+  methods: {
+    drawLine: function() {
+      // 绘制图表
+      var option = $.extend(
+        true,
+        {},
+        this.baseoption,
+        this.customTheme && this.customTheme.option
+      );
+      for (var i = 0; i < this.dataSource.length; i++) {
+        var dataobj = $.extend(
+          true,
+          { type: "line", data: [] },
+          this.customTheme && this.customTheme.series
+        );
+        for (var j = 0; j < this.dataSource[i].length; j++) {
+          if (
+            option.xAxis[0].data.includes(this.dataSource[i][j].name) === false
+          ) {
+            option.xAxis[0].data.push(this.dataSource[i][j].name);
+          }
+          dataobj.data.push(this.dataSource[i][j].value);
+        }
+        option.series.push(dataobj);
+      }
+
+      this.myChart.setOption(option);
+    }
+  }
+};
+</script>
