@@ -50,6 +50,12 @@ export default {
   mounted: function() {
     var self = this;
     this.myChart = this.$echarts.init(this.$refs.line_chart);
+    this.myChart.on("click", params => {
+      this.$emit("pointClick", params);
+    });
+    this.myChart.on("dblclick", params => {
+      this.$emit("pointdbClick", params);
+    });
     window.addEventListener("resize", function() {
       self.myChart.resize();
     });

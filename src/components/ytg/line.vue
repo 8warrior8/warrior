@@ -1,13 +1,18 @@
 <template>
-  <div id="line" class="linediv">
-    <linechart v-bind:dataSource="dataSource" v-bind:customTheme="customTheme"></linechart>
+  <div id="lineComp" class="linediv">
+    <linechart
+      v-bind:dataSource="dataSource"
+      v-bind:customTheme="customTheme"
+      v-on:pointClick="pointClick"
+      v-on:pointdbClick="pointdbClick"
+    ></linechart>
   </div>
 </template>
 
 <script>
 import line_chart from "./chart/line_chart";
 export default {
-  name: "line",
+  name: "lineComp",
   data() {
     return {
       dataSource: [],
@@ -97,6 +102,12 @@ export default {
       _line2.data.push(_dataitem22);
       this.dataSource.push(_line1);
       this.dataSource.push(_line2);
+    },
+    pointClick: function(param) {
+      var _param = param;
+    },
+    pointdbClick: function(param) {
+      var _param = param;
     }
   }
 };
