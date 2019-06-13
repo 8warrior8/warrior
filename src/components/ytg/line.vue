@@ -108,7 +108,7 @@ export default {
     },
     pointdbClick: function(param) {
       var _param = param;
-    }
+    },
   }
 };
 </script>
