@@ -64,18 +64,19 @@ export default {
         this.customTheme && this.customTheme.option
       );
       for (var i = 0; i < this.dataSource.length; i++) {
+        var _chartItem = this.dataSource[i];
         var dataobj = $.extend(
           true,
-          { type: "line", data: [] },
+          { name: _chartItem.title, type: "line", data: [] },
           this.customTheme && this.customTheme.series
         );
-        for (var j = 0; j < this.dataSource[i].length; j++) {
+        for (var j = 0; j < _chartItem.data.length; j++) {
           if (
-            option.xAxis[0].data.includes(this.dataSource[i][j].name) === false
+            option.xAxis[0].data.includes(_chartItem.data[j].name) === false
           ) {
-            option.xAxis[0].data.push(this.dataSource[i][j].name);
+            option.xAxis[0].data.push(_chartItem.data[j].name);
           }
-          dataobj.data.push(this.dataSource[i][j].value);
+          dataobj.data.push(_chartItem.data[j].value);
         }
         option.series.push(dataobj);
       }

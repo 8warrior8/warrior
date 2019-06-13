@@ -60,7 +60,10 @@ export default {
                 color: "blue"
               }
             }
-          ]
+          ],
+          legend: {
+            show: true
+          }
         }
       }
     };
@@ -74,24 +77,24 @@ export default {
   methods: {
     drawLine: function() {
       this.dataSource = [];
-      var _line1 = [];
+      var _line1 = { title: "line1", data: [] };
       var _dataitem1 = {};
       _dataitem1.name = "周一";
       _dataitem1.value = 100;
-      _line1.push(_dataitem1);
+      _line1.data.push(_dataitem1);
       var _dataitem2 = {};
       _dataitem2.name = "周二";
       _dataitem2.value = 150;
-      _line1.push(_dataitem2);
-      var _line2 = [];
+      _line1.data.push(_dataitem2);
+      var _line2 = { title: "line2", data: [] };
       var _dataitem21 = {};
       _dataitem21.name = "周一";
       _dataitem21.value = 110;
-      _line2.push(_dataitem21);
+      _line2.data.push(_dataitem21);
       var _dataitem22 = {};
       _dataitem22.name = "周二";
       _dataitem22.value = 160;
-      _line2.push(_dataitem22);
+      _line2.data.push(_dataitem22);
       this.dataSource.push(_line1);
       this.dataSource.push(_line2);
     }
