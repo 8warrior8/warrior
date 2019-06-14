@@ -9,7 +9,6 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import './styles/global.styl'
-import './styles/globalLight.styl'
 
 import axios from 'axios'
 // 引入echarts
