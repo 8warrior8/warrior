@@ -1,0 +1,13 @@
+cnpm install mock
+cnpm i element-ui -S
+cnpm install stylus --save
+cnpm install stylus-loader --save
+cnpm install axios
+
+cnpm install jquery --save
+cnpm install echarts -S
+
+props、 $emit/
+ $on、vuex、 $parent / 
+ $children、 $attrs/
+  $listeners和provide/inject，

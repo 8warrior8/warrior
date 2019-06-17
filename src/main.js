@@ -15,6 +15,9 @@ import axios from 'axios'
 // 引入echarts
 import echarts from 'echarts'
 
+//动态加载组件
+import './components/global.js'
+
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.$echarts = echarts

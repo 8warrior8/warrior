@@ -40,6 +40,12 @@ const store = new Vuex.Store({
 			}
 			state.count = state.count + n;
 		},
+		clear(state, n){
+			if (!n) {
+				n = 0;
+			}
+			state.count = 0;
+		},
 		remove(state, n){
 			if (!n) {
 				n = 1;
@@ -57,6 +63,9 @@ const store = new Vuex.Store({
 		},
 		removeFunc(context, n){
 			context.commit("remove", n);
+		},
+		clearFunc(context, n){
+			context.commit("clear");
 		}
 	},
 	modules: {

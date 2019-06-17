@@ -12,6 +12,8 @@ import Test6 from '@/components/test6'
 import Test7 from '@/components/test7'
 import Test8 from '@/components/test8/test8'
 import ytg from '@/components/ytg/ytg'
+import tbc from '@/components/tbc/tbc'
+import home from '@/components/tbc/home'
 
 Vue.use(Router)
 
@@ -65,5 +67,13 @@ export default new Router({
     path: '/ytg',
     name: 'ytg',
     component: ytg
+  },{
+    path: '/tbc',
+    name: 'tbc',
+    component: tbc
+  }, {
+    path: '/tbc/home',
+    name: 'home',
+    component: home
   }]
 })

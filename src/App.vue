@@ -12,6 +12,8 @@
       <router-link to="/test7" exact-active-class="link-active" tag="h3">自定义组件(含7种通讯)</router-link>
       <router-link to="/test8" exact-active-class="link-active" tag="h3">vue基础</router-link>
       <router-link to="/ytg" exact-active-class="link-active" tag="h3">script及组件传值</router-link>
+      <router-link to="/tbc" exact-active-class="link-active" tag="h3">es6 基础</router-link>
+      <router-link to="/tbc/home" exact-active-class="link-active" tag="h3">vue展示</router-link>
     </div>
     <transition name="slide-right">
       <router-view></router-view>
