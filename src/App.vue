@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <h2>全局统计：{{this.$store.state.count}}</h2>
+    <el-dropdown  class="colorBtn " trigger="click"  @command="changeColor">
+      <span class="el-dropdown-link " >换肤</span>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item command="light">浅色版</el-dropdown-item>
+        <el-dropdown-item command="dark">深色版</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
     <div class="my-link" >
       <router-link to="/" exact-active-class="link-active" tag="h3">首页</router-link>
       <router-link to="/test1" exact-active-class="link-active" tag="h3">vue路由</router-link>
@@ -23,8 +30,14 @@
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  methods: {
+    changeColor(command){
+      document.getElementById('app').className ='theme-'+command ;
+    }
+  },
 };
+
 </script>
 
 <style lang="stylus" scoped>
@@ -33,7 +46,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 .my-link{
   display: flex;
@@ -50,4 +62,9 @@ export default {
   color: yellow;
   background: #2c3e50;
 }
+.el-dropdown
+  font-weight:bold
+  &:hover
+    opacity:.5
+    cursor:pointer
 </style>

@@ -10,6 +10,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+// 模拟数据 --- start
+const express = require('express');
+const app = express(); //请求server
+var appData = require('../data.json'); //加载本地数据文件
+var getLineList = appData.lineList; //获取对应的本地数据
+var getNewsList = appData.getNewsList;
+var login = appData.login;
+var getOrderList = appData.getOrderList;
+var apiRoutes = express.Router();
+app.use('/server', apiRoutes); //通过路由请求数据
+// 模拟数据 --- end
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -42,7 +54,35 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    // 模拟数据 --- start
+    before(app) {
+      app.get('/server/getLineList', (req, res) => {
+        res.json({
+          errno: 0,
+          data: getLineList
+        })
+      }),
+        app.get('/server/getNewsList', (req, res) => {
+          res.json({
+            errno: 0,
+            data: getNewsList
+          })
+        }),
+        app.get('/server/login', (req, res) => {
+          res.json({
+            errno: 0,
+            data: login
+          })
+        }),
+        app.get('/server/getOrderList', (req, res) => {
+          res.json({
+            errno: 0,
+            data: getOrderList
+          })
+        })
     }
+    // 模拟数据 --- end
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -85,8 +125,8 @@ module.exports = new Promise((resolve, reject) => {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
         onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+          ? utils.createNotifierCallback()
+          : undefined
       }))
 
       resolve(devWebpackConfig)

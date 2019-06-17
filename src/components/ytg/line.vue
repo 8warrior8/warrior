@@ -82,26 +82,37 @@ export default {
   methods: {
     drawLine: function() {
       this.dataSource = [];
-      var _line1 = { title: "line1", data: [] };
-      var _dataitem1 = {};
-      _dataitem1.name = "周一";
-      _dataitem1.value = 100;
-      _line1.data.push(_dataitem1);
-      var _dataitem2 = {};
-      _dataitem2.name = "周二";
-      _dataitem2.value = 150;
-      _line1.data.push(_dataitem2);
-      var _line2 = { title: "line2", data: [] };
-      var _dataitem21 = {};
-      _dataitem21.name = "周一";
-      _dataitem21.value = 110;
-      _line2.data.push(_dataitem21);
-      var _dataitem22 = {};
-      _dataitem22.name = "周二";
-      _dataitem22.value = 160;
-      _line2.data.push(_dataitem22);
-      this.dataSource.push(_line1);
-      this.dataSource.push(_line2);
+      var self = this;
+      this.getLinePromise()
+        .then(function(data) {
+          data.data.forEach(function(lines, index) {
+            var _lineItem = { title: "line" + index, data: [] };
+            lines.forEach(function(item) {
+              var _dataitem = {};
+              _dataitem.name = item.name;
+              _dataitem.value = item.value;
+              _lineItem.data.push(_dataitem);
+            });
+            self.dataSource.push(_lineItem);
+          });
+        })
+        .catch(function(error) {
+          console.error("出错了", error);
+        });
+    },
+    getLinePromise: function() {
+      var self = this;
+      return new Promise(function(resolve, reject) {
+        self.$axios
+          .get("/server/getLineList")
+          .then(response => {
+            resolve(response.data);
+          })
+          .catch(function(error) {
+            // 请求失败处理
+            reject(error);
+          });
+      });
     },
     pointClick: function(param) {
       var _param = param;

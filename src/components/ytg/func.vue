@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="loading">
     <input v-model="msg">
     输入框的值:{{msg}}
     <button id="btnCreate" v-on:click="createButton">创建属性</button>
@@ -39,7 +39,8 @@ export default {
       answer: "",
       componentId: "child",
       a: 2,
-      childItem: { a: "111a" }
+      childItem: { a: "111a" },
+      loading: false
     };
   },
   computed: {
@@ -55,6 +56,7 @@ export default {
     question: function(newQuestion, oldQuestion) {
       //可以异步请求服务 获取 answer
       this.answer = "Waiting for you to stop typing...";
+      this.loading = true;
       //setTimeout(this.getAnswer(),5000);
       setTimeout(() => {
         this.getAnswer();
@@ -177,8 +179,10 @@ export default {
       this.getAnswerPromise()
         .then(function(answer) {
           self.answer = answer;
+          self.loading = false;
         })
         .catch(function(error) {
+          self.loading = false;
           console.error("出错了", error);
         });
     },
