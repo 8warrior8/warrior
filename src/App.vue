@@ -41,6 +41,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "./styles/global.styl";
+  .theme-light
+    theme($bg-color-light,$color-light);
+
+
+  .theme-dark
+    theme($bg-color-dark,$color-dark);
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

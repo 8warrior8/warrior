@@ -8,8 +8,6 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import './styles/global.styl'
-
 import axios from 'axios'
 // 引入echarts
 import echarts from 'echarts'
